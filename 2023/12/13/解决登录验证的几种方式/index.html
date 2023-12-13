@@ -1,0 +1,411 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自动化中解决验证登录的方式 - Hexo</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="登录验证的种类
+图形验证
+滑块验证
+验证码
+
+图形验证...">
+  <meta name="author" content="John Doe">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: 'https://www.pnglog.com/fyl0EX.png',
+        wechat: 'https://www.pnglog.com/GvLUN7.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v1.hitokoto.cn/?encode=text&c=j',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">自动化中解决验证登录的方式</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 摄影</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="https://w.wallhaven.cc/full/vm/wallhaven-vmdpd5.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">自动化中解决验证登录的方式</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>December 13, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4978</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <h2 id="登录验证的种类"><a href="#登录验证的种类" class="headerlink" title="登录验证的种类"></a>登录验证的种类</h2><ol>
+<li>图形验证</li>
+<li>滑块验证</li>
+<li>验证码</li>
+</ol>
+<h2 id="图形验证"><a href="#图形验证" class="headerlink" title="图形验证"></a>图形验证</h2><p>调用ddddocr模块写的工具类，返回图片中的内容。如果是需要点击验证的图形，可以利用这个插件，获取目标的坐标，再使用浏览器的操作链Actions来做点击操作</p>
+<p>下面是写的是工具类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ddddocr</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="keyword">from</span> tools.commentPath <span class="keyword">import</span> IMAGE_PATH</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">download_verify</span>(<span class="params">driver, xpath</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    :param driver: 浏览器实例化对象</span></span><br><span class="line"><span class="string">    :param xpath: 页面的xpath元素</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    driver.save_screenshot(IMAGE_PATH + <span class="string">&#x27;print_screen.png&#x27;</span>)    <span class="comment"># 全屏截图保存为本地图片</span></span><br><span class="line">    image = driver.find_element(By.XPATH, xpath)  <span class="comment"># 在验证码上右键-检查，查询到验证码的xpath路径，跟换为自己的xpath</span></span><br><span class="line">    location=image.location</span><br><span class="line">    size = image.size</span><br><span class="line">    rangle = (<span class="built_in">int</span>(location[<span class="string">&#x27;x&#x27;</span>]), <span class="built_in">int</span>(location[<span class="string">&#x27;y&#x27;</span>]), <span class="built_in">int</span>(location[<span class="string">&#x27;x&#x27;</span>] + size[<span class="string">&#x27;width&#x27;</span>]),</span><br><span class="line">              <span class="built_in">int</span>(location[<span class="string">&#x27;y&#x27;</span>] + size[<span class="string">&#x27;height&#x27;</span>]))</span><br><span class="line"></span><br><span class="line">    i = Image.<span class="built_in">open</span>(IMAGE_PATH + <span class="string">&quot;print_screen.png&quot;</span>)    <span class="comment"># 打开上面保存的全屏截图图片</span></span><br><span class="line">    frame4 = i.crop(rangle)</span><br><span class="line">    frame4.save(IMAGE_PATH + <span class="string">&#x27;test02.png&#x27;</span>)     <span class="comment"># 保存为验证码的截图图片</span></span><br><span class="line"></span><br><span class="line">    ocr = ddddocr.DdddOcr(beta=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(IMAGE_PATH + <span class="string">&quot;test02.png&quot;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        image = f.read()</span><br><span class="line">    res = ocr.classification(image)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+<p>调用时传入driver浏览器对象和xpath，xpath是定位页面元素的方法，具体可做修改</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="keyword">from</span> tools.download_verifyCode <span class="keyword">import</span> download_verify</span><br><span class="line"></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.implicitly_wait(<span class="number">3</span>)</span><br><span class="line">driver.maximize_window()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 华测读书屋</span></span><br><span class="line">driver.get(<span class="string">&#x27;http://novel.hctestedu.com/&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 点击注册</span></span><br><span class="line">driver.find_element(By.XPATH, <span class="string">&#x27;//*[@id=&quot;headerUserInfo&quot;]/span/a[2]&#x27;</span>).click()</span><br><span class="line">driver.find_element(By.XPATH, <span class="string">&#x27;//*[@id=&quot;txtUName&quot;]&#x27;</span>).send_keys(<span class="string">&#x27;18348443861&#x27;</span>)</span><br><span class="line">driver.find_element(By.XPATH, <span class="string">&#x27;//*[@id=&quot;txtPassword&quot;]&#x27;</span>).send_keys(<span class="string">&#x27;18348443861&#x27;</span>)</span><br><span class="line"><span class="comment"># 输入验证码</span></span><br><span class="line">res = download_verify(driver, <span class="string">&#x27;//*[@id=&quot;chkd&quot;]&#x27;</span>)</span><br><span class="line">driver.find_element(By.XPATH, <span class="string">&#x27;//*[@id=&quot;TxtChkCode&quot;]&#x27;</span>).send_keys(res)</span><br><span class="line"><span class="comment"># 点击注册</span></span><br><span class="line">driver.find_element(By.XPATH, <span class="string">&#x27;//*[@id=&quot;btnRegister&quot;]&#x27;</span>).click()</span><br><span class="line"></span><br><span class="line">sleep(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭浏览器</span></span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
+
+<h2 id="滑块验证"><a href="#滑块验证" class="headerlink" title="滑块验证"></a>滑块验证</h2><p>工作中常见两种滑块，直接滑到末尾和缺口图形的滑动</p>
+<p>直接换到末尾的，使用下面代码即可</p>
+<p>滑动缺口图形的需要使用OCR识别背景缺口图和缺块图，确定需要移动的像素大小，再使用Action来执行拖动动作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pyautogui</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line"><span class="comment"># pyautogui 自动防故障</span></span><br><span class="line">pyautogui.FAILSAFE =<span class="literal">False</span></span><br><span class="line">pyautogui.PAUSE = <span class="number">1</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string"># 目标：滑动滑块</span></span><br><span class="line"><span class="string"># 1.定位按钮</span></span><br><span class="line"><span class="string"># 2.按住滑块</span></span><br><span class="line"><span class="string"># 3.滑块滑动</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.maximize_window()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送请求</span></span><br><span class="line">driver.get(<span class="string">&#x27;https://www.helloweba.net/demo/2017/unlock/&#x27;</span>)</span><br><span class="line"><span class="comment"># 1.定位按钮</span></span><br><span class="line">short_obj = driver.find_element(By.XPATH, <span class="string">&#x27;/html/body/div/div/div/div[1]/div[1]/div[3]&#x27;</span>)</span><br><span class="line"><span class="comment"># 2.按住滑块</span></span><br><span class="line"><span class="comment"># 创建一个动作链对象，参数就是浏览器对象</span></span><br><span class="line">action = webdriver.ActionChains(driver)</span><br><span class="line"><span class="comment"># 按住</span></span><br><span class="line">action.click_and_hold(short_obj)</span><br><span class="line"><span class="comment"># 3.滑动滑块</span></span><br><span class="line">action.move_by_offset(<span class="number">600</span>, <span class="number">0</span>).perform()</span><br><span class="line"></span><br><span class="line">action.release()</span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
+
+<h2 id="手机验证码"><a href="#手机验证码" class="headerlink" title="手机验证码"></a>手机验证码</h2><p>以前可能会使用万能码的方法，但出于安全考虑，现在基本不使用。可以从开发那里拿来验证码的接口，自己写方法来接收。</p>
+<h2 id="两种万能方法"><a href="#两种万能方法" class="headerlink" title="两种万能方法"></a>两种万能方法</h2><h4 id="使用cookie跳过登录"><a href="#使用cookie跳过登录" class="headerlink" title="使用cookie跳过登录"></a>使用cookie跳过登录</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os.path</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> yaml</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support.wait <span class="keyword">import</span> WebDriverWait</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    yaml中没有cookie数据时，执行登录操作，并把此次登录的cookie写到yaml文件中</span></span><br><span class="line"><span class="string">    存在数据时，读取yaml文件，并把其中的数据添加到driver中，让浏览器对象携带cookie信息，从而绕过登录</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.maximize_window()</span><br><span class="line">driver.implicitly_wait(<span class="number">10</span>)</span><br><span class="line">driver.get(<span class="string">&#x27;https://mail.qq.com/&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 判断”resource“文件夹是否存在</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">&#x27;resource&#x27;</span>):</span><br><span class="line">    os.mkdir(<span class="string">&#x27;resource&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 判断cookie是否存在, 有--&gt;使用cookie跳过登录   无--&gt;手动登录</span></span><br><span class="line"><span class="keyword">if</span> os.path.exists(<span class="string">&#x27;resource/2.yaml&#x27;</span>):</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 读取cookie，加入到driver</span></span><br><span class="line">    cookie = yaml.safe_load(<span class="built_in">open</span>(<span class="string">&#x27;resource/2.yaml&#x27;</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> cookie:</span><br><span class="line">        driver.add_cookie(i)</span><br><span class="line">    <span class="comment"># 打开</span></span><br><span class="line">    driver.get(<span class="string">&#x27;https://mail.qq.com/cgi-bin/frame_html?sid=Np67V2ZrGlkhfUAl&amp;r=6b50f4c66d35fd0bacc6ea044245622b&amp;lang=zh&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># 扫码登录，等待页面加载</span></span><br><span class="line">    WebDriverWait(driver, <span class="number">600</span>).until(expected_conditions.url_contains(<span class="string">&#x27;cgi-bin/frame&#x27;</span>))</span><br><span class="line"></span><br><span class="line">    cookie = driver.get_cookies()</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;resource/2.yaml&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        yaml.safe_dump(cookie, f)</span><br><span class="line"></span><br><span class="line">time.sleep(<span class="number">3</span>)</span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="规避检测"><a href="#规避检测" class="headerlink" title="规避检测"></a>规避检测</h4><p>也是使用Action，在浏览器启动前执行js注入，本质是模拟正常用户的登录，正常用户登录时window.navigator.webdriver是为flase，而使用selement则为true</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> ActionChains</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> Chrome</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.chrome.options <span class="keyword">import</span> Options</span><br><span class="line"></span><br><span class="line">chrome_options = Options()</span><br><span class="line">chrome_options.add_argument(<span class="string">&quot;--disable-blink-features=AutomationControlled&quot;</span>)</span><br><span class="line">driver = Chrome(options=chrome_options)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./stealth.min.js&#x27;</span>) <span class="keyword">as</span> f: 	<span class="comment"># 填的是stealth.min.js的完整地址</span></span><br><span class="line">    js = f.read()</span><br><span class="line"><span class="comment">#进行js注入</span></span><br><span class="line">driver.execute_cdp_cmd(<span class="string">&quot;Page.addScriptToEvaluateOnNewDocument&quot;</span>, &#123;</span><br><span class="line">  <span class="string">&quot;source&quot;</span>: js</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">driver.get(<span class="string">&#x27;https://www.baidu.com&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>John Doe</li>
+    <li><strong>本文链接：</strong><a href="http://example.com/2023/12/13/%E8%A7%A3%E5%86%B3%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/index.html" title="http:&#x2F;&#x2F;example.com&#x2F;2023&#x2F;12&#x2F;13&#x2F;%E8%A7%A3%E5%86%B3%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F&#x2F;index.html">http:&#x2F;&#x2F;example.com&#x2F;2023&#x2F;12&#x2F;13&#x2F;%E8%A7%A3%E5%86%B3%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="https://www.pnglog.com/fyl0EX.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+        
+  <nav class="nav">
+    <a></a>
+    <a href="/2023/12/13/%E4%BB%A3%E7%A0%81%E5%BF%AB%E6%B5%8B%E8%AF%95/">代码块测试<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-text">登录验证的种类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81"><span class="toc-text">图形验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BB%91%E5%9D%97%E9%AA%8C%E8%AF%81"><span class="toc-text">滑块验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="toc-text">手机验证码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E4%B8%87%E8%83%BD%E6%96%B9%E6%B3%95"><span class="toc-text">两种万能方法</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=894519210 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/DeliAike "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:izhaoo@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
