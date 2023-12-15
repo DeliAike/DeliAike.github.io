@@ -1,0 +1,437 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Web自动化注意点 - Hexo</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="
+下拉框select标签
+iframe
+切换浏览器句柄...">
+  <meta name="author" content="John Doe">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: 'https://www.pnglog.com/fyl0EX.png',
+        wechat: 'https://www.pnglog.com/GvLUN7.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v1.hitokoto.cn/?encode=text&c=j',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">Web自动化注意点</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 摄影</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="https://w.wallhaven.cc/full/r2/wallhaven-r2qjj1.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">Web自动化注意点</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>December 15, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3138</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <ol>
+<li>下拉框select标签</li>
+<li>iframe</li>
+<li>切换浏览器句柄</li>
+<li>上传文件 –  指定文件</li>
+<li>下载文件  –  指定下载位置</li>
+<li>使用显示等待对登录进行错误检测</li>
+<li>使用JS操作页面</li>
+<li>使用cookie跳过登录</li>
+<li>单例模式  –  针对浏览器对象</li>
+</ol>
+<p>[TOC]</p>
+<h2 id="定位下拉框方法"><a href="#定位下拉框方法" class="headerlink" title="定位下拉框方法"></a>定位下拉框方法</h2><p>关键代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.1定位到select标签元素，并放到一个变量中</span></span><br><span class="line">element = driver.find_element(By.XPATH, <span class="string">&#x27;/html/body/div[3]/div[3]/div[1]/form/table/tbody/tr[10]/td[2]/select&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.2实例化下拉框对象</span></span><br><span class="line">ele = Select(element)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.3使用select_by_dindex方法选择指定元素</span></span><br><span class="line">ele.select_by_index(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="进入iframe层"><a href="#进入iframe层" class="headerlink" title="进入iframe层"></a>进入iframe层</h2><p>关键代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># switch_kto_frame 向内切换到指定frame</span></span><br><span class="line">driver.switch_to.frame(driver.find_element(By.CSS_SELECTOR, <span class="string">&#x27;[class=&quot;QQMailSdkTool_login_loginBox_qq_iframe&quot;]&#x27;</span>))    <span class="comment"># 进入第一层frame</span></span><br><span class="line">driver.switch_to.frame(driver.find_element(By.CSS_SELECTOR, <span class="string">&#x27;[id=&quot;ptlogin_iframe&quot;]&#x27;</span>))       <span class="comment"># 进入第二层frame</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># switch_to.dafault_content()切换到最外层的frame</span></span><br><span class="line">driver.switch_to.default_content()      <span class="comment"># 切换到最外层</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="切换浏览器句柄"><a href="#切换浏览器句柄" class="headerlink" title="切换浏览器句柄"></a>切换浏览器句柄</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">driver.find_element(By.XPATH, <span class="string">&#x27;//a[text()=&quot;hao123&quot;]&#x27;</span>).click()      <span class="comment"># ----&gt; hao123</span></span><br><span class="line">handles = driver.window_handles</span><br><span class="line"></span><br><span class="line">driver.switch_to.window(handles[-<span class="number">1</span>])	<span class="comment"># 切换到最新打开的句柄</span></span><br><span class="line">driver.switch_to.window(handles[<span class="number">0</span>])		<span class="comment"># 切换到最早/最左侧句柄</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="web上传文件时，使用pyautogui来指定文件"><a href="#web上传文件时，使用pyautogui来指定文件" class="headerlink" title="web上传文件时，使用pyautogui来指定文件"></a>web上传文件时，使用pyautogui来指定文件</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_47139649/article/details/109259533?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522170261066216800184189762%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=170261066216800184189762&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-109259533-null-null.142%5Ev96%5Econtrol&utm_term=pyautogui&spm=1018.2226.3001.4187">pyautogui详细操作总结</a></p>
+<p><strong>pyautogui</strong>是控制鼠标键盘的模块</p>
+<p>点击上传后，浏览器对象无法操作window打开的文件，这时使用pyautogui模块来操作指定文件进行上传</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 点击上传文件</span></span><br><span class="line">driver.find_element_by_xpath(<span class="string">&quot;//*[@id=&#x27;upload_form&#x27;]/div[1]/div[2]&quot;</span>).click()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用pyautogui选择指定文件上传</span></span><br><span class="line">pyautogui.typewrite(<span class="string">&#x27;C:\\Users\\Jian\\Pictures\\1014941.png\n&#x27;</span>)</span><br><span class="line">pyautogui.press(<span class="string">&#x27;enter&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="指定文件下载地址"><a href="#指定文件下载地址" class="headerlink" title="指定文件下载地址"></a>指定文件下载地址</h2><p>关键代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    浏览器下载文件，并指定下载路径（只指定本次）</span></span><br><span class="line"><span class="string">    在实例化浏览器驱动对象之前，对浏览器做一些操作</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">options = webdriver.ChromeOptions() <span class="comment"># 创建设置对象</span></span><br><span class="line">prefs = &#123;<span class="string">&quot;download.default_directory&quot;</span>: <span class="string">r&quot;D:\test&quot;</span>&#125; <span class="comment">#指定下载文件路径</span></span><br><span class="line">options.add_experimental_option(<span class="string">&quot;prefs&quot;</span>, prefs)</span><br><span class="line"></span><br><span class="line">driver = webdriver.Chrome(options=options) <span class="comment"># 实例化浏览器对象时，添加options的值</span></span><br><span class="line">........</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="对登录错误场景进行的测试"><a href="#对登录错误场景进行的测试" class="headerlink" title="对登录错误场景进行的测试"></a>对登录错误场景进行的测试</h2><p>关键代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    1.使用显示等待，等到”密码不正确“提示出现，记录下提示信息---&gt;断言</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">msg= WebDriverWait(driver, <span class="number">10</span>, <span class="number">0.5</span>).until(<span class="keyword">lambda</span> x: x.find_element(By.XPATH, <span class="string">&#x27;//*[@class=&quot;error-msg&quot; and @style!=&quot;display: none;&quot;]&#x27;</span>)).text</span><br><span class="line">assert_equal(msg, <span class="string">&#x27;密码不正确&#x27;</span>, msg=<span class="string">&#x27;密码不正确&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="python中使用JS操作页面"><a href="#python中使用JS操作页面" class="headerlink" title="python中使用JS操作页面"></a>python中使用JS操作页面</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 页面向下滑动2000像素</span></span><br><span class="line">driver.execute_script(<span class="string">&#x27;document.documentElement.scrollTop=2000&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Singal</span>:</span><br><span class="line">    <span class="comment"># 初始化对象为None</span></span><br><span class="line">    _instance = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__new__</span>(<span class="params">cls, *args, **kwargs</span>):</span><br><span class="line">        <span class="keyword">if</span> cls._instance <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="comment"># 如果为空 使用父类Object来开辟对象内存空间</span></span><br><span class="line">            cls._instance = <span class="built_in">super</span>().__new__(cls)</span><br><span class="line">        <span class="comment"># 否则 返回对象</span></span><br><span class="line">        <span class="keyword">return</span> cls._instance</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CommDriver</span>(<span class="title class_ inherited__">Singal</span>):</span><br><span class="line">    <span class="comment"># 初始化浏览器对象为None</span></span><br><span class="line">    driver = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_driver</span>(<span class="params">self, browser_type</span>):</span><br><span class="line">        <span class="keyword">if</span> self.driver <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="comment"># driver为None时，判断浏览器对象类型</span></span><br><span class="line">            <span class="keyword">if</span> browser_type == <span class="string">&#x27;chrome&#x27;</span>:</span><br><span class="line">                self.driver = WebChrome()</span><br><span class="line">            <span class="keyword">elif</span> browser_type == <span class="string">&#x27;firfox&#x27;</span>:</span><br><span class="line">                self.driver = WebFirefox()</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> Exception(<span class="string">f&#x27;<span class="subst">&#123;browser_type&#125;</span>暂不支持&#x27;</span>)</span><br><span class="line">            <span class="comment"># 对浏览器的初始化动作可以添加到这里</span></span><br><span class="line">            self.driver.maximize_window()</span><br><span class="line">            self.driver.implicitly_wait(<span class="number">10</span>)</span><br><span class="line">        <span class="comment"># 返回浏览器对象</span></span><br><span class="line">        <span class="keyword">return</span> self.driver</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>John Doe</li>
+    <li><strong>本文链接：</strong><a href="http://example.com/2023/12/15/Web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B3%A8%E6%84%8F%E7%82%B9/index.html" title="http:&#x2F;&#x2F;example.com&#x2F;2023&#x2F;12&#x2F;15&#x2F;Web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B3%A8%E6%84%8F%E7%82%B9&#x2F;index.html">http:&#x2F;&#x2F;example.com&#x2F;2023&#x2F;12&#x2F;15&#x2F;Web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B3%A8%E6%84%8F%E7%82%B9&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="https://www.pnglog.com/fyl0EX.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+        
+  <nav class="nav">
+    <a></a>
+    <a href="/2023/12/15/Git/">Git<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D%E4%B8%8B%E6%8B%89%E6%A1%86%E6%96%B9%E6%B3%95"><span class="toc-text">定位下拉框方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5iframe%E5%B1%82"><span class="toc-text">进入iframe层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%A5%E6%9F%84"><span class="toc-text">切换浏览器句柄</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%97%B6%EF%BC%8C%E4%BD%BF%E7%94%A8pyautogui%E6%9D%A5%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6"><span class="toc-text">web上传文件时，使用pyautogui来指定文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80"><span class="toc-text">指定文件下载地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E7%99%BB%E5%BD%95%E9%94%99%E8%AF%AF%E5%9C%BA%E6%99%AF%E8%BF%9B%E8%A1%8C%E7%9A%84%E6%B5%8B%E8%AF%95"><span class="toc-text">对登录错误场景进行的测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E4%B8%AD%E4%BD%BF%E7%94%A8JS%E6%93%8D%E4%BD%9C%E9%A1%B5%E9%9D%A2"><span class="toc-text">python中使用JS操作页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">单例模式</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=894519210 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/DeliAike "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:izhaoo@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
