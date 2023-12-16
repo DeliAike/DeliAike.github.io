@@ -1,0 +1,408 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ADB - Hexo</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="常用1234567891011adb devices	...">
+  <meta name="author" content="John Doe">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: 'https://www.pnglog.com/fyl0EX.png',
+        wechat: 'https://www.pnglog.com/GvLUN7.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v1.hitokoto.cn/?encode=text&c=j',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">ADB</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 摄影</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="https://w.wallhaven.cc/full/x1/wallhaven-x11d5v.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">ADB</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>December 16, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3829</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <h2 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">adb devices	<span class="comment"># 查看连接状态</span></span><br><span class="line"></span><br><span class="line">adb install &lt;apk路径&gt;	<span class="comment"># 普通安装</span></span><br><span class="line">adb install -r &lt;apk路径&gt;	<span class="comment"># 覆盖安装</span></span><br><span class="line">adb uninstall &lt;包名&gt;	<span class="comment"># 完全卸载</span></span><br><span class="line">adb uninstall -k &lt;包名&gt;	<span class="comment"># 保留配置文件</span></span><br><span class="line"></span><br><span class="line">adb push &lt;电脑路径&gt; &lt;设备路径&gt;	<span class="comment"># 从电脑上传文件至设备</span></span><br><span class="line">adb pull &lt;设备路径&gt; &lt;电脑路径&gt;	<span class="comment"># 从设备复制文件至电脑</span></span><br><span class="line"></span><br><span class="line">adb shell	<span class="comment"># 进入Android系统内部</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Activity-管理器–am"><a href="#Activity-管理器–am" class="headerlink" title="Activity 管理器–am"></a>Activity 管理器–am</h4><p>在 adb shell 中，可以使用 Activity 管理器 (am) 工具发出命令以执行各种系统操作，如启动 Activity、强行停止进程、修改设备屏幕属性，等等。</p>
+<p>在测试过程中，如果需要启动 app 或者强制关闭 app，可以通过 adb 命令来实现。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell am start -n &lt;包名&gt;/&lt;Activity名&gt;	<span class="comment"># 启动应用</span></span><br><span class="line">adb shell am force-stop &lt;包名&gt;	<span class="comment"># 强制停止应用</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="软件包管理器–pm"><a href="#软件包管理器–pm" class="headerlink" title="软件包管理器–pm"></a>软件包管理器–pm</h4><p>在 adb shell 中，可以使用软件包管理器 (pm) 工具发出命令，以对设备上安装的应用软件包执行操作和查询。</p>
+<p>如果需要查询设备里都安装了什么应用，就可以使用 adb shell pm list 来查看，还可以加上不同的参数去查看不同类型的应用。而且也可以通过 adb 命令来清除应用相关的数据。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm list packages	<span class="comment"># 显示设备中安装的所有应用</span></span><br><span class="line">adb shell pm list packages -s	<span class="comment"># 只显示系统应用</span></span><br><span class="line">adb shell pm list packages -3	<span class="comment"># 只显示第三方应用</span></span><br><span class="line">adb shell pm clear &lt;包名&gt;	<span class="comment"># 删除与软件包关联的所有数据</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="adb-shell-dumpsys"><a href="#adb-shell-dumpsys" class="headerlink" title="adb shell dumpsys"></a>adb shell dumpsys</h4><p>dumpsys 是一种在 Android 设备上运行的工具，可提供有关系统服务的信息。可以使用 adb 从命令行调用 dumpsys，获取当前运行软件的包名和Activity</p>
+<h6 id="Mac-Linux："><a href="#Mac-Linux：" class="headerlink" title="Mac&#x2F;Linux："></a>Mac&#x2F;Linux：</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys window windows | grep mFocusedApp</span><br><span class="line">adb shell dumpsys window windows | grep mCurrentFocus</span><br><span class="line">adb shell dumpsys window | grep mCurrentFocus</span><br></pre></td></tr></table></figure>
+
+<h6 id="Windows"><a href="#Windows" class="headerlink" title="Windows:"></a>Windows:</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys window windows  | findstr mCurrentFocus</span><br><span class="line">adb shell dumpsys window | findstr mCurrentFocus</span><br><span class="line">adb shell dumpsys window windows | findstr mFocusedApp</span><br></pre></td></tr></table></figure>
+
+<h2 id="Monkey"><a href="#Monkey" class="headerlink" title="Monkey"></a>Monkey</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">adb shell input tap x y	<span class="comment"># 点击手机屏幕坐标点</span></span><br><span class="line">adb shell input text string	<span class="comment"># 向输入框输入文本</span></span><br><span class="line">adb shell swipe &lt;起点x&gt; &lt;起点y&gt; &lt;终点x&gt; &lt;终点y&gt; 时间(毫秒单位)	<span class="comment"># 滑动屏幕</span></span><br><span class="line">adb shell input keyevent 4	<span class="comment"># 返回键</span></span><br><span class="line">adb shell input keyevent 3	<span class="comment"># home键</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="adb-查看性能指标"><a href="#adb-查看性能指标" class="headerlink" title="adb 查看性能指标"></a>adb 查看性能指标</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">adb shell dumpsys cupinfo	<span class="comment"># 查看当前系统cpu使用情况</span></span><br><span class="line">adb shell dumpsys meminfo	<span class="comment"># 查看当前系统内存使用情况</span></span><br><span class="line">adb shell dumpsys meminfo &lt;应用包名&gt;	<span class="comment"># 查看当前应用内存使用情况</span></span><br><span class="line">adb shell top	<span class="comment"># 查看系统进程占用资源情</span></span><br><span class="line">adb shell top -d 1	<span class="comment"># 每隔一秒查看系统进程占用资源情况</span></span><br><span class="line">adb shell top | findstr “包名”	<span class="comment"># windows查看系统某个应用占用资源情况</span></span><br><span class="line">adb shell top | grep “包名”	<span class="comment"># linux查看系统某个应用占用资源情况</span></span><br><span class="line">adb shell dumpsys battery	<span class="comment"># 获取电池状态</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="monkey测试"><a href="#monkey测试" class="headerlink" title="monkey测试"></a>monkey测试</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">adb shell monkey &lt;事件数&gt;	<span class="comment"># monkey测试命令： </span></span><br><span class="line">adb shell monkey -v &lt;事件数&gt;打印详细日志（E级日志）-vv 更详细日志 -vvv 所有日志	<span class="comment"># monkey测试命令 并打印日志 </span></span><br><span class="line">ps | grep monkey 查看monkey进程 <span class="built_in">kill</span> -9 进程号 杀掉monkey进程	<span class="comment"># 杀掉monkey测试进程</span></span><br><span class="line">adb shell monkey -p 包名 &lt;事件数&gt;	<span class="comment"># 指定一个包进行monkey测试</span></span><br><span class="line">adb shell monkey -p 包名 -p 包名 &lt;事件数&gt;	<span class="comment"># 指定一个包进行monkey测试</span></span><br><span class="line">adb shell monkey -p 包名 --throttle 时长（毫秒）	<span class="comment"># 添加时间间隔的monkey测试</span></span><br><span class="line">设置种子数（复测相同的事件序列）-s 用于指定伪随机数生成器的seed（种子）值</span><br></pre></td></tr></table></figure>
+
+<h4 id="错误事件比例"><a href="#错误事件比例" class="headerlink" title="错误事件比例"></a>错误事件比例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">0：–pct-touch//touch events percentage触摸事件百分比（触摸事件是一个在屏幕单一位置的按下-抬起事件）</span><br><span class="line"></span><br><span class="line">1：–pct-motion//motion events</span><br><span class="line">percentage手势事件百分比（手势事件是由一个在屏幕某处的按下事件、一系列的伪随机移动、一</span><br><span class="line">个抬起事件组成）即一个滑动操作，但是是直线的，不能拐弯</span><br><span class="line"></span><br><span class="line">2：–pct-pinchzoom//pinch zoom events percentage二指缩放百分比，即智能机上的放大缩小手势操作</span><br><span class="line"></span><br><span class="line">3：–pct-trackball//trackball 即单纯的Move（ACTION_MOVE） events</span><br><span class="line">percentage轨迹球事件百分比（轨迹球事件包括一个或多个随机移动，有时还伴有点击。轨迹球现</span><br><span class="line">在智能手机上已经没有了，就是类似手柄的方向键一样）</span><br><span class="line"></span><br><span class="line">4：–pct-rotation//screen rotation events percentage屏幕旋转百分比，横屏竖屏</span><br><span class="line"></span><br><span class="line">5：–pct-nav//nav 基本导航事件。即来自于方向输入设备的上下左右操作。 events</span><br><span class="line">percentage”基本”导航事件百分比（导航事件包括上下左右，如方向输入设备的输入）老手机的上 下左右键，智能机上没有</span><br><span class="line"></span><br><span class="line">6：–pct-majornav//major 即Navigation Bar的确认，菜单，返回键等 nav events</span><br><span class="line">percentage”主要”导航事件百分比（这些导航事件通常会引发UI的事件，例如5-way pad的 中间键、回退键、菜单键）</span><br><span class="line"></span><br><span class="line">7：–pct-syskeys//system(key) operations</span><br><span class="line">percentage”系统”按钮事件百分比（这些按钮一般专供系统使用，如Home, Back, Start Call, End</span><br><span class="line">Call,音量控制）</span><br><span class="line"></span><br><span class="line">8：–pct-appswitch//app switch events</span><br><span class="line">percentage启动activity事件百分比。在随机的间隔里，Monkey会执行一个</span><br><span class="line">startActivity()调用，作为最大程度覆盖包中全部Activity的一种方法</span><br><span class="line"></span><br><span class="line">9：–pct-flip//keyboard flip</span><br><span class="line">percentage键盘轻弹百分比，如点击输入框，键盘弹起，点击输入框以外区域，键盘收回</span><br><span class="line"></span><br><span class="line">10：–pct-anyevent//anyevents 该事件可能包含其他上述事件。</span><br><span class="line">percentage其他类型事件百分比。包括了其他所有的类型事件，如按键、其他不常用的设备上的按钮等等。</span><br></pre></td></tr></table></figure>
+
+<h4 id="忽略异常"><a href="#忽略异常" class="headerlink" title="忽略异常"></a>忽略异常</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">--dbg-no-events：初始化启动的activity，但是不产生任何事件。</span><br><span class="line"></span><br><span class="line">--hprof：指定该项后在事件序列发送前后会立即生成分析报告  —— 一般建议指定该项。</span><br><span class="line"></span><br><span class="line">--ignore-crashes：忽略崩溃</span><br><span class="line"></span><br><span class="line">--ignore-timeouts：忽略超时</span><br><span class="line"></span><br><span class="line">--ignore-security-exceptions：忽略安全异常</span><br><span class="line"></span><br><span class="line">--kill-process-after-error：发生错误后直接杀掉进程</span><br><span class="line"></span><br><span class="line">--monitor-native-crashes：跟踪本地方法的崩溃问题</span><br><span class="line"></span><br><span class="line">--wait-dbg：知道连接了调试器才执行monkey测试。</span><br></pre></td></tr></table></figure>
+
+<h4 id="日志分析"><a href="#日志分析" class="headerlink" title="日志分析"></a>日志分析</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.crash 闪退</span><br><span class="line">2.exception	异常</span><br><span class="line">3.force closed	强制退出</span><br><span class="line">4. anr (application no response) 程序无响应</span><br></pre></td></tr></table></figure>
+
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>John Doe</li>
+    <li><strong>本文链接：</strong><a href="http://example.com/2023/12/16/ADB/index.html" title="http:&#x2F;&#x2F;example.com&#x2F;2023&#x2F;12&#x2F;16&#x2F;ADB&#x2F;index.html">http:&#x2F;&#x2F;example.com&#x2F;2023&#x2F;12&#x2F;16&#x2F;ADB&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="https://www.pnglog.com/fyl0EX.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+        
+  <nav class="nav">
+    <a></a>
+    <a href="/2023/12/15/Web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B3%A8%E6%84%8F%E7%82%B9/">Web自动化注意点<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8"><span class="toc-text">常用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Monkey"><span class="toc-text">Monkey</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=894519210 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/DeliAike "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:izhaoo@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
